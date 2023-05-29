@@ -1,6 +1,6 @@
 {
-    "name": "spaceman",
-    "short_name": "spaceman",
+    "name": "space_man",
+    "short_name": "space_man",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
