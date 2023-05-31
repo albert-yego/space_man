@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.riverpod_product_app">
+    package="com.example.space_man">
    <application
-        android:label="riverpod_product_app"
+        android:label="space_man"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,4 @@
-package com.example.riverpod_product_app
+package com.example.space_man
 
 import io.flutter.embedding.android.FlutterActivity
 
