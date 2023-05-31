@@ -14,13 +14,13 @@ class Basket extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Henüz sepetin boş, hemen bir şeyler ekle"),
+                  Text("Your cart is empty yet, add something now"),
                   OutlinedButton(
                       onPressed: () {
                         ref.read(bottomNavBarRiverpod).setCurrentIndex(0);
                       },
                       child: const Text(
-                        "Ürünlere Git",
+                        "Go To Products",
                       ))
                 ],
               ),
@@ -30,7 +30,7 @@ class Basket extends ConsumerWidget {
                 Padding(
                   padding: [20, 15, 20, 0].paddingLTRB,
                   child: Text(
-                    "Sepet",
+                    "Basket",
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1
@@ -61,13 +61,13 @@ class Basket extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Toplam Tutar: ${product.totalPrice} ₺",
+                        "Total amount: ${product.totalPrice} ₺",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       OutlinedButton(
                         onPressed: () {},
                         child: Text(
-                          "Sipariş Ver",
+                          "Order",
                         ),
                       )
                     ],

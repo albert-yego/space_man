@@ -15,13 +15,13 @@ class Favorite extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Henüz favorilerin boş, hemen bir şeyler ekle"),
+                  Text("Your favorites are empty yet, add something now"),
                   OutlinedButton(
                       onPressed: () {
                         ref.read(bottomNavBarRiverpod).setCurrentIndex(0);
                       },
                       child: const Text(
-                        "Ürünlere Git",
+                        "Go To Products",
                       ))
                 ],
               ),
@@ -31,7 +31,7 @@ class Favorite extends ConsumerWidget {
                 Padding(
                   padding: [20, 15, 20, 0].paddingLTRB,
                   child: Text(
-                    "Favoriler",
+                    "Favorites",
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1

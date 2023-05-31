@@ -82,8 +82,9 @@ class ProductWidget extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
+
                             Text(
-                              "Ekle",
+                                "Add Box" ,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,

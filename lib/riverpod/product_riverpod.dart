@@ -28,8 +28,8 @@ class ProductRiverpod extends ChangeNotifier {
     basketProducts.add(model);
     setTotalPrice(model);
     Grock.snackBar(
-      title: "Başarılı",
-      description: "${model.title} başarıyla sepete eklendi",
+      title: "Successful",
+      description: "${model.title} successfully added to cart",
       icon: Icons.check,
     );
   }
@@ -38,9 +38,10 @@ class ProductRiverpod extends ChangeNotifier {
     for (int i = 0; i < 15; i++) {
       products.add(
         ProductModel(
+          isBasket: false,
           isFavorite: false,
-          title: "Xiaomi ${i + 1}",
-          description: "${8 + (i * 2)} MP kameralı ve 55${i * 10} mAh batarya",
+          title: "youphone ${i + 1}",
+          description: "${8 + (i * 2)} MP camra ve 55${i * 10} mAh batary",
           price: 6000.0 + (i * 10),
           imagePath: i.randomImage(),
         ),
