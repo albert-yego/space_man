@@ -25,13 +25,23 @@ class ProductRiverpod extends ChangeNotifier {
   }
 
   void addedBasket(ProductModel model) {
-    basketProducts.add(model);
-    setTotalPrice(model);
-    Grock.snackBar(
-      title: "Successful",
-      description: "${model.title} successfully added to cart",
-      icon: Icons.check,
-    );
+    if (model.isBasket) {
+      model.isBasket = false;
+      basketProducts.remove(model);
+      notifyListeners();
+    } else {
+      model.isBasket = true;
+      basketProducts.add(model);
+      setTotalPrice(model);
+      Grock.snackBar(
+        title: "Successful",
+        description: "${model.title} successfully added to cart",
+        icon: Icons.check,
+
+      );
+      notifyListeners();
+    }
+
   }
 
   void init() {

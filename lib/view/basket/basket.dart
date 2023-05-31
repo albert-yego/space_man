@@ -48,7 +48,8 @@ class Basket extends ConsumerWidget {
                       model: product.basketProducts[index],
                       setFavorite: () =>
                           product.setFavorite(product.basketProducts[index]),
-                      setBasket: () {},
+                      setBasket: ()  =>
+                        product.addedBasket(product.basketProducts[index]),
                     );
                   },
                 ),

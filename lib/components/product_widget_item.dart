@@ -77,14 +77,16 @@ class ProductWidget extends StatelessWidget {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children:  [
                             Icon(CupertinoIcons.bag_badge_plus),
                             SizedBox(
                               width: 5,
                             ),
 
                             Text(
-                                "Add Box" ,
+                              model.isBasket
+                                  ? "remove to buy"
+                                  : "buy",
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
