@@ -1,6 +1,6 @@
 {
-    "name": "space_man",
-    "short_name": "space_man",
+    "name": "riverpod_product_app",
+    "short_name": "riverpod_product_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

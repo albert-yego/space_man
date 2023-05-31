@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:grock/grock.dart';
+import 'package:spece_man/view/base_scaffold/base_scaffold.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(ProviderScope(child: MyApp()));
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
-      
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      scaffoldMessengerKey: Grock.snackbarMessengerKey,
+      home: const BaseScaffold(),
+    );
   }
 }
-
