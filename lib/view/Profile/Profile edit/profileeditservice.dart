@@ -19,37 +19,36 @@ class ProfileEditService{
   final dbRef = FirebaseDatabase.instance.ref().child('Users');
 
   Future<bool> change(String name, String email, String phoneN, String userK) async {
-
     try{
-        Map<String, String> users = {
-          'name': name,
-          'phone_number': phoneN,
-          'email': email,
-        };
+      Map<String, String> users = {
+        'name': name,
+        'phone_number': phoneN,
+        'email': email,
+      };
 
-        dbRef
-          .child(userK)
-          .update(users)
-          .then((value) => {});
-          FirebaseAuth.instance.currentUser!.updateDisplayName(name);
-          FirebaseAuth.instance.currentUser!.updateEmail(email);
-        return true;
+      dbRef
+        .child(userK)
+        .update(users)
+        .then((value) => {});
+      FirebaseAuth.instance.currentUser!.updateDisplayName(name);
+      FirebaseAuth.instance.currentUser!.updateEmail(email);
+      return true;
       // }
-      }catch(e){
-        print('Login error: $e');
-        _showErrorToast('An error occurred during editing');
-      }
-      return false;
+    }catch(e){
+      print('Login error: $e');
+      _showErrorToast('An error occurred during editing');
     }
-
-    void _showErrorToast(String errorMessage) {
-      Fluttertoast.showToast(
-        msg: errorMessage,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-    }
+    return false;
   }
+
+  void _showErrorToast(String errorMessage) {
+    Fluttertoast.showToast(
+      msg: errorMessage,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+}

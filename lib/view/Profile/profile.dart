@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:spece_man/login/login.dart';
 import 'package:spece_man/view/Profile/Profile%20edit/profileeditservice.dart';
 import 'package:spece_man/view/Profile/profile edit/profile_edit.dart';
 import 'package:spece_man/view/Profile/profileservice.dart';
@@ -23,16 +24,33 @@ class Profile extends ConsumerWidget {
     final profileService = ref.read(profileServiceProvider);
     return Scaffold(
       backgroundColor: Colors.white,
-      body: FutureBuilder(
-        future: profileService.customerAccountDetails(authcurrent!),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return displayUserInformation(context, snapshot);
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+      body: Column(
+        children: [
+          FutureBuilder(
+            future: profileService.customerAccountDetails(authcurrent!),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return displayUserInformation(context, snapshot);
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ), 
+          defaultButton(
+            text: "Sign Out",
+            onPress: () async{
+              await profileService.logout().then((value) => {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Login(),
+                ),
+              )
+            });
+            }
+          ),
+        ]
+      )
     );
   }
 

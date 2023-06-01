@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spece_man/constants/constants.dart';
@@ -5,7 +6,7 @@ import 'package:spece_man/constants/constants.dart';
 final profileServiceProvider = Provider<ProfileService>((ref) => ProfileService(ref.read));
 
 class ProfileService {
-
+  final auth = FirebaseAuth.instance;
   final Reader _read;
   ProfileService(this._read);
 
@@ -68,5 +69,9 @@ class ProfileService {
       print('customerlist: ${e.toString()}');
       return {};
     }
+  }
+
+  Future<void> logout() async{
+    await auth.signOut();
   }
 }
