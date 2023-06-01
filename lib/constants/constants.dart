@@ -13,11 +13,10 @@ class Customer {
   final String name;
   final String phone;
   final String email;
-  final String surname;
   final String photoURL;
   final String auth_uid;
 
-  Customer(this.uid, this.name, this.phone, this.email, this.surname,this.photoURL, this.auth_uid);
+  Customer(this.uid, this.name, this.phone, this.email,this.photoURL, this.auth_uid);
 }
 Future<List<Customer>> customerListMaker() async {
   List<Customer> customerList = [];
@@ -32,9 +31,10 @@ Future<List<Customer>> customerListMaker() async {
             value['name'],
             value['phone_number'],
             value['email'],
-            value['surname'],
             value['photoURL'],
-            value['auth_uid']));
+            value['auth_uid']
+            ),
+        );
       });
       return customerList;
     } else {
@@ -60,7 +60,6 @@ Future<Map<dynamic, dynamic>> customerAccountDetails(String? email) async {
           'name': element.name,
           'phone_number': element.phone,
           'email': element.email,
-          'surname': element.surname,
           'photoURL': element.photoURL,
           'uid': element.uid,
           'auth_uid': element.auth_uid,

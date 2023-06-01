@@ -16,7 +16,7 @@ class Home extends ConsumerWidget {
           Padding(
             padding: [20, 15, 20, 0].paddingLTRB,
             child: Text(
-              "Producs",
+              "Products",
               style:
                   Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16),
             ),
