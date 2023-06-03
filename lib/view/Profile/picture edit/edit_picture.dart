@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:convert';
-import 'dart:typed_data';
-import 'package:base_x/base_x.dart';
-import 'package:spece_man/view/Profile/profile.dart';
 import 'package:spece_man/view/Profile/splash/animated_splash_screen.dart';
-import 'package:spece_man/view/base_scaffold/base_scaffold.dart';
-
 import '../../../components/default_button.dart';
-import '../../../constants/constants.dart';
+import '../../../services/constants.dart';
 import 'editpictureservice.dart';
 
 final editpictureServiceProvider = Provider<EditPictureService>((ref) => EditPictureService(ref.read));

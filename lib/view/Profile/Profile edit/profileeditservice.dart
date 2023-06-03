@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:spece_man/view/Profile/profileservice.dart';
-import '../profile_model.dart';
 
 final profileeditServiceProvider = Provider<ProfileEditService>((ref) => ProfileEditService(ref.read));
 

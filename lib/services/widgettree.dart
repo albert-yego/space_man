@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spece_man/login/login.dart';
 import 'package:spece_man/view/base_scaffold/base_scaffold.dart';
 
-class widgettree extends StatefulWidget {
-  const widgettree({super.key});
+class authStateCheckService extends StatefulWidget {
+  const authStateCheckService({super.key});
 
-  State<widgettree> createState() => _widgettreeState();
+  State<authStateCheckService> createState() => _authStateCheckServiceState();
 }
 
-class _widgettreeState extends State<widgettree> {
+class _authStateCheckServiceState extends State<authStateCheckService> {
   @override
   Widget build(BuildContext context){
     return StreamBuilder(

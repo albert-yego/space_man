@@ -1,21 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:spece_man/login/login.dart';
-import 'package:spece_man/view/Profile/Profile%20edit/profileeditservice.dart';
+import 'package:spece_man/services/firebaseauth.dart';
 import 'package:spece_man/view/Profile/profile edit/profile_edit.dart';
 import 'package:spece_man/view/Profile/profileservice.dart';
+import 'package:spece_man/components/default_button.dart';
 
-import '../../components/default_button.dart';
-import '../../constants/constants.dart';
+import '../../services/constants.dart';
 
 
 class Profile extends ConsumerWidget {
 
   Profile({Key? key}) : super(key: key);
 
-  String? authcurrent = FirebaseAuth.instance.currentUser?.email;
+  String? authcurrent = FireAuth().currentUser?.email;
   String photo1 = FirebaseAuth.instance.currentUser!.photoURL.toString();
 
   final profileServiceProvider =Provider<ProfileService>((ref) => ProfileService(ref.read));
@@ -30,7 +29,7 @@ class Profile extends ConsumerWidget {
             future: profileService.customerAccountDetails(authcurrent!),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return displayUserInformation(context, snapshot);
+                return displayUserInformation(context,ref, snapshot);
               } else {
                 return Center(child: CircularProgressIndicator());
               }
@@ -39,7 +38,8 @@ class Profile extends ConsumerWidget {
           defaultButton(
             text: "Sign Out",
             onPress: () async{
-              await profileService.logout().then((value) => {
+              profileService.updateCurrentUser();
+              await FireAuth().signOut().then((value) => {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -54,8 +54,9 @@ class Profile extends ConsumerWidget {
     );
   }
 
-  Widget displayUserInformation(context, snapshot) {
+  Widget displayUserInformation(BuildContext context, WidgetRef ref, snapshot) {
     Map signedInCustomer = snapshot.data as Map;
+    final profileService = ref.read(profileServiceProvider);
 
     return Padding(
       padding: EdgeInsets.all(getHeight / 40),
@@ -127,7 +128,8 @@ class Profile extends ConsumerWidget {
             SizedBox(height: getHeight / 9),
             defaultButton(
               text: "Edit Profile",
-              onPress: () {
+              onPress: () async{
+                profileService.updateCurrentUser();
                 Navigator.push(
                   context,
                   MaterialPageRoute(

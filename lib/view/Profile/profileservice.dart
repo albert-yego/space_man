@@ -1,18 +1,20 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spece_man/constants/constants.dart';
+import 'package:spece_man/model/Customer_model.dart';
+
+import '../../services/firebaseauth.dart';
 
 final profileServiceProvider = Provider<ProfileService>((ref) => ProfileService(ref.read));
 
 class ProfileService {
-  final auth = FirebaseAuth.instance;
+
   final Reader _read;
   ProfileService(this._read);
+  DatabaseReference dbRef = FirebaseDatabase.instance.ref();
 
   Future<List<Customer>> customerListMaker() async {
     List<Customer> customerList = [];
-    final snapshot = await DBref.child('Users').get();
+    final snapshot = await dbRef.child('Users').get();
 
     try {
       if (snapshot.exists) {
@@ -71,7 +73,20 @@ class ProfileService {
     }
   }
 
-  Future<void> logout() async{
-    await auth.signOut();
+  
+  void updateCurrentUser() async {
+    try {
+      Map CurrUser = await customerAccountDetails(FireAuth().currentUser!.email);
+      String curname = CurrUser['name'];
+      String curphoto = CurrUser['photoURL'];
+      FireAuth().currentUser?.updateDisplayName(curname);
+      FireAuth().currentUser?.updatePhotoURL(curphoto);
+      final ref = dbRef.child('Users').child('${CurrUser['uid']}');
+      ref.update({'auth_uid': FireAuth().currentUser!.uid});
+    } on TypeError catch (e) {
+      print('updater: ${e.toString()}');
+    } catch (e) {
+      print('updater: ${e.toString()}');
+    }
   }
 }

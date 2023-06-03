@@ -1,12 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spece_man/components/bottom_nav_bar.dart';
-import 'package:spece_man/login/login.dart';
 import 'package:spece_man/riverpod/riverpod_management.dart';
-
-import '../../constants/constants.dart';
 import '../../riverpod/bottom_nav_bar_riverpod.dart';
 
 class BaseScaffold extends ConsumerStatefulWidget {
@@ -17,16 +13,12 @@ class BaseScaffold extends ConsumerStatefulWidget {
 }
 
 class _BaseScaffoldState extends ConsumerState<BaseScaffold> {
-  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
     ref.read(productRiverpod).init();
     setState(() {});
     super.initState();
-    if (FirebaseAuth.instance.currentUser!.displayName == null) {
-      updater();
-    }
   }
 
   @override

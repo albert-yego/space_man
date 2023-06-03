@@ -2,21 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spece_man/services/firebaseauth.dart';
 
 final loginServiceProvider = Provider<LoginService>((ref) => LoginService(ref.read));
 
 class LoginService{
   final Reader _read;
-  final _auth = FirebaseAuth.instance;
   LoginService(this._read);
 
   Future<bool> login(String email, String password) async {
     try{
-      final UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-        return true;
+      await FireAuth().signInWithEmailAndPassword(email: email,password: password);
+      return true;
     }on FirebaseAuthException catch (e){
       if(e.code == "user-not-found"){
         print('Login error: $e');
