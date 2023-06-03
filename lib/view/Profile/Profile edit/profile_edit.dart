@@ -18,11 +18,9 @@ class EditProfile extends ConsumerWidget {
   EditProfile({Key? key, required this.userK}) : super(key: key);
 
   final String userK;
-
   final username = TextEditingController();
   final email = TextEditingController();
   final phoneN = TextEditingController();
-
   final _validationKey = GlobalKey<FormState>();
   final nameFocus = FocusNode();
   final emailFocus = FocusNode();
@@ -223,7 +221,7 @@ class EditProfile extends ConsumerWidget {
         errorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         focusedErrorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         hintText: "Username",
-        hintStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.black),
         icon: Icon(
           Icons.account_circle,
           color: Colors.black,
@@ -268,7 +266,7 @@ class EditProfile extends ConsumerWidget {
         errorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         focusedErrorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         hintText: "Email",
-        hintStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.black),
         icon: Icon(
           Icons.email,
           color: Colors.black,
@@ -299,7 +297,7 @@ class EditProfile extends ConsumerWidget {
       decoration: InputDecoration(
         prefix: Padding(
           padding: EdgeInsets.all(4),
-          child: Text('+90'),
+          child: Text('+90')
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -314,7 +312,7 @@ class EditProfile extends ConsumerWidget {
         errorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         focusedErrorBorder:OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         hintText: "Phone Number",
-        hintStyle: TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: Colors.black),
         icon: Icon(
           Icons.phone_android,
           color: Colors.black,

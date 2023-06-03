@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:spece_man/register/registerservice.dart';
 import 'package:spece_man/register/splash/animated_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+final registerServiceProvider =Provider<RegisterService>((ref) => RegisterService(ref.read));
 
 class Register extends ConsumerWidget {
 
@@ -13,14 +13,11 @@ class Register extends ConsumerWidget {
   late TextEditingController _phoneController = TextEditingController();
   late TextEditingController _emailController = TextEditingController();
   late TextEditingController _passwordController = TextEditingController();
-
   final _validationKey = GlobalKey<FormState>();
   final usernameFocus = FocusNode();
   final emailFocus = FocusNode();
   final phoneFocus = FocusNode();
   final passwordFocus = FocusNode();
-  
-  final registerServiceProvider =Provider<RegisterService>((ref) => RegisterService(ref.read));
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

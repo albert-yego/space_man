@@ -9,6 +9,7 @@ import 'package:spece_man/components/default_button.dart';
 
 import '../../services/constants.dart';
 
+final profileServiceProvider =Provider<ProfileService>((ref) => ProfileService(ref.read));
 
 class Profile extends ConsumerWidget {
 
@@ -16,8 +17,6 @@ class Profile extends ConsumerWidget {
 
   String? authcurrent = FireAuth().currentUser?.email;
   String photo1 = FirebaseAuth.instance.currentUser!.photoURL.toString();
-
-  final profileServiceProvider =Provider<ProfileService>((ref) => ProfileService(ref.read));
 
   Widget build(BuildContext context, WidgetRef ref){
     final profileService = ref.read(profileServiceProvider);

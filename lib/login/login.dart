@@ -6,6 +6,7 @@ import 'package:spece_man/login/splash/animated_splash.dart';
 import 'package:spece_man/register/register.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+final loginServiceProvider =Provider<LoginService>((ref) => LoginService(ref.read));
 
 class Login extends  ConsumerWidget{
 
@@ -13,8 +14,6 @@ class Login extends  ConsumerWidget{
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  final loginServiceProvider =Provider<LoginService>((ref) => LoginService(ref.read));
   
   @override
   Widget build(BuildContext context, WidgetRef ref){
