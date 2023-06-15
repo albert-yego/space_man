@@ -1,6 +1,6 @@
-# riverpod_product_app
+# spaceMAn
 
-A new Flutter project.
+A Flutter project.
 
 ## Getting Started
 
