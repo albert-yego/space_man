@@ -1,4 +1,4 @@
-# spaceMAn
+# spaceMan
 
 A Flutter project.
 
